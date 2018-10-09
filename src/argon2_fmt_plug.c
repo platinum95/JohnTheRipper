@@ -38,7 +38,9 @@ john_register_one(&fmt_argon2);
 #if defined (JOHN_NO_SIMD)
 #define ALGORITHM_NAME          "Blake2"
 #else
-#if defined(__XOP__)
+#if defined(__AVX512F__)
+#define ALGORITHM_NAME          "Blake2 AVX512F"
+#elif defined(__XOP__)
 #define ALGORITHM_NAME          "Blake2 XOP"
 #elif defined(__AVX__)
 #define ALGORITHM_NAME          "Blake2 AVX"
